@@ -5,7 +5,7 @@ numberText.innerText = 0;
 
 function onClickBtn(event) {
   event.preventDefault();
-  console.dir(event);
+
   numberText.innerText++;
 }
 
