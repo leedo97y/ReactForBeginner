@@ -1,12 +1,10 @@
 const numberText = document.querySelector("#number-text");
 const growBtn = document.querySelector("#grow-btn");
 
-numberText.innerText = 0;
+let counter = 0;
 
-function onClickBtn(event) {
-  event.preventDefault();
-
-  numberText.innerText++;
+function onClickBtn() {
+  numberText.innerText = "Total Clicks : " + counter++;
 }
 
 growBtn.addEventListener("click", onClickBtn);
