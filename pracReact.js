@@ -5,17 +5,20 @@ const h3 = React.createElement(
   {
     onMouseEnter: () => console.log("i'm here!!"),
   },
-  "Count Number : "
+  "Hello there!! i'm title"
 );
 const button = React.createElement(
   "button",
   {
     onClick: () => console.log("Clicked!!"),
+    style: {
+      backgroundColor: "tomato",
+    },
   },
-  "Click"
+  "Click Me"
 );
 const container = React.createElement("div", null, [h3, button]);
-// use react Dom - rander span in root
+// use react Dom - render span in root
 ReactDOM.render(container, root);
 
 // ______________________________________________________________
