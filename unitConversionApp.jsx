@@ -1,13 +1,16 @@
-const App = () => {
+// Component #1 Minutes - Hours
+const MinutesToHours = () => {
+  // change function을 걸어줄 모든 부분에 쓰이므로 minutes에서 amount로 변경함
   const [amount, setAmount] = React.useState(0);
   const [flipped, setFlipped] = React.useState(false);
-  const [hide, setHide] = React.useState(false);
 
   const onChange = (event) => {
     setAmount(event.target.value);
   };
 
-  const reset = () => setAmount(0);
+  const reset = () => {
+    setAmount(0);
+  };
 
   const onFlip = () => {
     reset();
@@ -16,15 +19,9 @@ const App = () => {
   // if flipped is false => true
   // if flipped is true => false
 
-  const onSwitch = () => {
-    reset();
-    setHide((current) => !current);
-  };
-
   return (
     <div>
-      <h1>Super Converter</h1>
-      <div hidden={hide}>
+      <div>
         <label htmlFor="minutes">Minutes</label>
         <input
           id="minutes"
@@ -35,7 +32,7 @@ const App = () => {
           disabled={flipped === true}
         />
       </div>
-      <div hidden={hide}>
+      <div>
         <label htmlFor="hours">Hours</label>
         <input
           id="hours"
@@ -48,7 +45,33 @@ const App = () => {
           disabled={flipped === false}
         />
       </div>
-      <div hidden={!hide}>
+      <button onClick={reset}>Reset</button>
+      <button onClick={onFlip}>{flipped ? "Turn back" : "Flip"}</button>
+    </div>
+  );
+};
+
+// Component #2 Km - Miles
+const KmToMiles = () => {
+  const [amount, setAmount] = React.useState(0);
+  const [flipped, setFlipped] = React.useState(false);
+
+  const onChange = (event) => {
+    setAmount(event.target.value);
+  };
+
+  const reset = () => {
+    setAmount(0);
+  };
+
+  const onFlip = () => {
+    reset();
+    setFlipped((current) => !current);
+  };
+
+  return (
+    <div>
+      <div>
         <label htmlFor="miles">Miles</label>
         <input
           id="miles"
@@ -59,7 +82,7 @@ const App = () => {
           disabled={flipped === true}
         />
       </div>
-      <div hidden={!hide}>
+      <div>
         <label htmlFor="kilometers">Kilmeters</label>
         <input
           id="kilometers"
@@ -71,8 +94,29 @@ const App = () => {
         />
       </div>
       <button onClick={reset}>Reset</button>
-      <button onClick={onFlip}>Flip</button>
-      <button onClick={onSwitch}>Switch</button>
+      <button onClick={onFlip}>{flipped ? "Turn back" : "Flip"}</button>
+    </div>
+  );
+};
+
+// Main App Component
+const App = () => {
+  const [index, setIndex] = React.useState("xx");
+  const onSelect = (event) => {
+    setIndex(event.target.value);
+  };
+  return (
+    <div>
+      <h1>Super Converter</h1>
+      <select value={index} onChange={onSelect}>
+        <option value="xx">Select your units</option>
+        <option value="0">Minutes & Hours</option>
+        <option value="1">Miles & Kilometers</option>
+      </select>
+      <hr />
+      {index === "xx" ? "please select your units" : null}
+      {index === "0" ? <MinutesToHours /> : null}
+      {index === "1" ? <KmToMiles /> : null}
     </div>
   );
 };
