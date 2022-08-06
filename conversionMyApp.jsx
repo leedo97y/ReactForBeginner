@@ -1,4 +1,5 @@
 const App = () => {
+  // change function을 걸어줄 모든 부분에 쓰이므로 minutes에서 amount로 변경함
   const [amount, setAmount] = React.useState(0);
   const [flipped, setFlipped] = React.useState(false);
   const [hide, setHide] = React.useState(false);
