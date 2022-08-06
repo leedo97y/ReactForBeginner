@@ -8,7 +8,10 @@ const App = () => {
 
   const reset = () => setAmount(0);
 
-  const onFlip = () => setFlipped((current) => !current);
+  const onFlip = () => {
+    reset();
+    setFlipped((current) => !current);
+  };
   // if flipped is false => true
   // if flipped is true => false
 
