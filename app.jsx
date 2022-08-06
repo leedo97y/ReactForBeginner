@@ -6,6 +6,7 @@ const App = () => {
   // 여기서 useState는 숫자 배열을 만들어준다.
   const onClick = () => {
     setCounter(counter + 1);
+    // = calculate next State
   };
   // 1. counter를 받아서 return의 h3의 counter에 넣어준다.
   // 2. 버튼을 누르면 onClick 이벤트 함수가 실행됨.
