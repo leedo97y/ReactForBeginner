@@ -1,4 +1,9 @@
-function Btn(props) {
+function Btn({ text }) {
+  /**
+   * props is Object
+   * so you can write argument like this
+   * ex) {text}
+   */
   return (
     <button
       style={{
@@ -9,7 +14,7 @@ function Btn(props) {
         border: "1px solid tomato",
       }}
     >
-      Save Change
+      {text}
     </button>
   );
 }
