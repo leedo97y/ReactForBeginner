@@ -4,6 +4,7 @@ function Btn({ text, fontSize = 15, onClick }) {
   // 위의 argument들은 다음으로 대체가능하다. ({중괄호 안에 쓰는 것 대신에})
   // props를 argument 부분에 적은 뒤,
   // props.text, props.fontSize, props.onClick으로 활용가능하다.
+  // 활용은 할 수 있지만 위에 원래 쓴 방법대로 쓰는 것이 훨씬 편하고 보기에 쉽다.
   return (
     <button
       onClick={onClick}
