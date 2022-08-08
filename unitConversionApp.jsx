@@ -1,21 +1,15 @@
-/**
- * props is Object
- * so you can write argument like this
- * ex) {text}
- */
-
-function Btn({ text, onClick }) {
-  console.log(text, "was rendered");
+// default value를 설정해줄 수 있음
+// fontSize가 존재하지 않는다면 default value로 설정됨
+function Btn({ text, fontSize = 15 }) {
   return (
     <button
-      onClick={onClick}
       style={{
         backgroundColor: "tomato",
         color: "white",
         padding: "10px 20px",
         borderRadius: 10,
         border: "1px solid tomato",
-        // font {big} is true => 18px, {big} is false => 15px
+        fontSize,
       }}
     >
       {text}
@@ -23,25 +17,20 @@ function Btn({ text, onClick }) {
   );
 }
 
-const MemorizedBtn = React.memo(Btn);
-// prevent re-rendering Btn that doesn't change
-// if you don't prevent re-rendering problems, program will be slower
+Btn.propTypes = {
+  text: PropTypes.string,
+  fontSize: PropTypes.number,
+};
+// propTypes를 지정해주면, type을 틀렸을때 경고 문구가 뜬다.
+// 어디서 오류가 났는지 파악하기 쉬움
 
-// Main App Component
 const App = () => {
-  const [value, setValue] = React.useState("Save Changes");
-  const changeValue = () => {
-    setValue("Revert Changes");
-  };
   return (
     <div>
-      <MemorizedBtn text={value} onClick={changeValue} />
-      <MemorizedBtn text="Continue" />
+      <Btn text="Save Changes" fontSize={18} />
+      <Btn text="Continue" />
     </div>
   );
-  // text, onClick is just Props. Not an eventListener
-  // So you must write it on function Btn's argument.
-  // and you must write it down on Btn's html code too.
 };
 
 const root = document.querySelector("#root");
