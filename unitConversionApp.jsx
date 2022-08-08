@@ -1,6 +1,9 @@
 // default value를 설정해줄 수 있음
 // fontSize가 존재하지 않는다면 default value로 설정됨
 function Btn({ text, fontSize = 15, onClick }) {
+  // 위의 argument들은 다음으로 대체가능하다.
+  // props를 argument 부분에 적은 뒤,
+  // props.text, props.fontSize, props.onClick으로 활용가능하다.
   return (
     <button
       onClick={onClick}
