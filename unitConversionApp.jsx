@@ -1,18 +1,20 @@
-function Btn({ text, big }) {
-  /**
-   * props is Object
-   * so you can write argument like this
-   * ex) {text}
-   */
+/**
+ * props is Object
+ * so you can write argument like this
+ * ex) {text}
+ */
+
+function Btn({ text, onClick }) {
+  console.log(text, "was rendered");
   return (
     <button
+      onClick={onClick}
       style={{
         backgroundColor: "tomato",
         color: "white",
         padding: "10px 20px",
         borderRadius: 10,
         border: "1px solid tomato",
-        fontSize: big ? 18 : 15,
         // font {big} is true => 18px, {big} is false => 15px
       }}
     >
@@ -21,14 +23,25 @@ function Btn({ text, big }) {
   );
 }
 
+const MemorizedBtn = React.memo(Btn);
+// prevent re-rendering Btn that doesn't change
+// if you don't prevent re-rendering problems, program will be slower
+
 // Main App Component
 const App = () => {
+  const [value, setValue] = React.useState("Save Changes");
+  const changeValue = () => {
+    setValue("Revert Changes");
+  };
   return (
     <div>
-      <Btn text="Save Changes" big={true} />
-      <Btn text="Continue" big={false} />
+      <MemorizedBtn text={value} onClick={changeValue} />
+      <MemorizedBtn text="Continue" />
     </div>
   );
+  // text, onClick is just Props. Not an eventListener
+  // So you must write it on function Btn's argument.
+  // and you must write it down on Btn's html code too.
 };
 
 const root = document.querySelector("#root");
